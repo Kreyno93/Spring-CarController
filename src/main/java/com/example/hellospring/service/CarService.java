@@ -8,7 +8,6 @@ import java.util.List;
 
 import static com.example.hellospring.service.GenerateUUID.generateUUID;
 
-@Service
 public class CarService {
 
     CarRepo carRepo = new CarRepo();

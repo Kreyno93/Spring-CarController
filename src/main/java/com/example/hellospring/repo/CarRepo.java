@@ -8,13 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Repository
 public class CarRepo {
 
     private final Map<String, Car> cars = new HashMap<>();
 
-    public Car addCar(Car car) {
-        return cars.put(car.getId(), car);
+    public Car addCar(Car carWithId) {
+        cars.put(carWithId.getId(), carWithId);
+        return carWithId;
     }
 
     public List<Car> getAllCars() {
