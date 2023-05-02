@@ -21,11 +21,16 @@ public class CarRepo {
         return new ArrayList<>(cars.values());
     }
 
+
+    public boolean carExists(String id) {
+        return cars.containsKey(id);
+    }
+
     public void deleteCar(String id) {
         cars.remove(id);
     }
 
-    public boolean carExists(String id) {
-        return cars.containsKey(id);
+    public void updateCar(String id, Car car) {
+        cars.replace(id, car);
     }
 }

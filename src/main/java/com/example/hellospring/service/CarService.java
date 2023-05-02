@@ -22,15 +22,18 @@ public class CarService {
     }
 
     public void deleteCar(String id) {
-        carRepo.deleteCar(id);
+        if (!carRepo.carExists(id)) {
+            throw new CarNotFoundException(id);
+        } else {
+            carRepo.deleteCar(id);
+        }
     }
 
     public void updateCar(String id, Car car) {
         if (!carRepo.carExists(id)) {
             throw new CarNotFoundException(id);
         } else {
-            carRepo.deleteCar(id);
-            carRepo.addCar(car.withId(id));
+            carRepo.updateCar(id, car);
         }
     }
 }
