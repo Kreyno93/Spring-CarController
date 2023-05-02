@@ -26,7 +26,7 @@ public class CarService {
     }
 
     public void updateCar(String id, Car car) {
-        if (carRepo.carExists(id)) {
+        if (!carRepo.carExists(id)) {
             throw new CarNotFoundException(id);
         } else {
             carRepo.deleteCar(id);
