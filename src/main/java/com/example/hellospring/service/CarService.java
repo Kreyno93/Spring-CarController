@@ -1,5 +1,6 @@
 package com.example.hellospring.service;
 
+import com.example.hellospring.exceptions.CarNotFoundException;
 import com.example.hellospring.model.Car;
 import com.example.hellospring.repo.CarRepo;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,11 @@ public class CarService {
     }
 
     public void updateCar(String id, Car car) {
-        carRepo.deleteCar(id);
-        carRepo.addCar(car.withId(id));
+        if (carRepo.carExists(id)) {
+            throw new CarNotFoundException(id);
+        } else {
+            carRepo.deleteCar(id);
+            carRepo.addCar(car.withId(id));
+        }
     }
 }
